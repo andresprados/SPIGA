@@ -1,0 +1,17 @@
+*.pyc
+*__pycache__*
+*core.*
+_ext
+tmp
+*.o*
+*~
+*.idea
+*.mp4
+*.h5
+*.pt
+
+# Virtual enviroment
+**/venv
+
+# Dataset images
+/data/databases

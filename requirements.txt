@@ -1,0 +1,9 @@
+matplotlib>=3.2.1
+numpy>=1.18.2
+opencv-python>=4.2.0.32
+Pillow>=7.0.0
+torch>=1.4.0
+torchvision>=0.5.0
+torchaudio
+scipy
+scikit-learn
