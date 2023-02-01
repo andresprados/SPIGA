@@ -129,6 +129,7 @@ class DatabaseStruct:
         self.name = database_name
         self.ldm_ids, self.ldm_flip_order, self.ldm_edges_matrix = self._get_database_specifics()
         self.num_landmarks = len(self.ldm_ids)
+        self.num_edges = len(self.ldm_edges_matrix[0])-1
         self.fields = ['imgpath', 'bbox', 'headpose', 'ids', 'landmarks', 'visible']
 
     def _get_database_specifics(self):

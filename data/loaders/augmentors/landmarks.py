@@ -51,7 +51,8 @@ class GeometryBaseAug:
     def map_affine_transformation(self, sample, affine_transf, new_size=None):
         sample['image'] = self._image_affine_trans(sample['image'], affine_transf, new_size)
         sample['bbox'] = self._bbox_affine_trans(sample['bbox'], affine_transf)
-        sample['landmarks'] = self._landmarks_affine_trans(sample['landmarks'], affine_transf)
+        if 'landmarks' in sample.keys():
+            sample['landmarks'] = self._landmarks_affine_trans(sample['landmarks'], affine_transf)
         return sample
 
     def clean_outbbox_landmarks(self, shape, landmarks, mask):
@@ -184,14 +185,16 @@ class TargetCropAug(GeometryBaseAug):
                                   [0, mu_y, new_y0 - mu_y * y0]])
 
         sample = self.map_affine_transformation(sample, affine_transf,(new_w, new_h))
-        img_shape = np.array([0, 0, self.new_size_x, self.new_size_y])
-        sample['landmarks_float'] = sample['landmarks']
-        sample['mask_ldm_float'] = sample['mask_ldm']
-        sample['landmarks'] = np.round(sample['landmarks'])
-        sample['mask_ldm'], sample['landmarks'] = self.clean_outbbox_landmarks(img_shape, sample['landmarks'], sample['mask_ldm'])
+        if 'landmarks' in sample.keys():
+            img_shape = np.array([0, 0, self.new_size_x, self.new_size_y])
+            sample['landmarks_float'] = sample['landmarks']
+            sample['mask_ldm_float'] = sample['mask_ldm']
+            sample['landmarks'] = np.round(sample['landmarks'])
+            sample['mask_ldm'], sample['landmarks'] = self.clean_outbbox_landmarks(img_shape, sample['landmarks'],
+                                                                                   sample['mask_ldm'])
 
-        if self.img2map_scale:
-            sample = self._rescale_map(sample)
+            if self.img2map_scale:
+                sample = self._rescale_map(sample)
         return sample
 
     def _rescale_map(self, sample):
@@ -214,6 +217,7 @@ class TargetCropAug(GeometryBaseAug):
         sample['landmarks'] = new_lnd
         sample['img2map_scale'] = [self.map_scale_x, self.map_scale_y]
         return sample
+
 
 
 class OcclusionAug:
