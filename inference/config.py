@@ -1,38 +1,32 @@
 from collections import OrderedDict
 
+from data.loaders.dl_config import DatabaseStruct
+
 
 class ModelConfig(object):
 
-    def __init__(self, dataset=None):
+    def __init__(self, dataset_name=None):
         # Model configuration
         self.model_weights = None
         self.model_weights_path = None
         # Pretreatment
-        self.target_dist = 1.6
+        self.focal_ratio = 1.5          # Camera matrix focal length ratio.
+        self.target_dist = 1.6          # Target distance zoom in/out around face.
         self.image_size = (256, 256)
         # Outputs
         self.ftmap_size = (64, 64)
         # Dataset
         self.dataset = None
-        self.num_landmarks = None
-        self.num_edges = None
 
-        if dataset is not None:
-            self.update_with_dataset(dataset)
+        if dataset_name is not None:
+            self.update_with_dataset(dataset_name)
 
-    def update_with_dataset(self, dataset):
+    def update_with_dataset(self, dataset_name):
 
-        config_dict = {'dataset': dataset, 'model_weights': 'spiga_%s.pt'%dataset}
-        if dataset in ['wflw']:
-            config_dict['num_landmarks'] = 98
-            config_dict['num_edges'] = 15
-        elif dataset in ['300wpublic', '300wprivate', 'merlrav', 'cofw68']:
-            config_dict['num_landmarks'] = 68
-            config_dict['num_edges'] = 13
-        else:
-            raise NotImplementedError()
+        config_dict = {'dataset': DatabaseStruct(dataset_name),
+                       'model_weights': 'spiga_%s.pt' % dataset_name}
 
-        if dataset == 'cofw68':     # Test only
+        if dataset_name == 'cofw68':     # Test only
             config_dict['model_weights'] = 'spiga_300wprivate.pt'
 
         self.update(config_dict)
