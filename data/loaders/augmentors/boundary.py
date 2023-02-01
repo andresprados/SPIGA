@@ -76,10 +76,10 @@ class AddBoundary(object):
             boundaries['left_eyebrow'] = left_eyebrow[mask_lnd[17:22] > 0]
             right_eyebrow = landmarks[22:27]
             boundaries['right_eyebrow'] = right_eyebrow[mask_lnd[22:27] > 0]
-            noise = landmarks[27:31]
-            boundaries['nose'] = noise[mask_lnd[27:31] > 0]      # Nose Awing notation mistake
-            noise_bot = landmarks[31:36]
-            boundaries['nose_bot'] = noise_bot[mask_lnd[31:36] > 0]
+            nose = landmarks[27:31]
+            boundaries['nose'] = nose[mask_lnd[27:31] > 0]
+            nose_bot = landmarks[31:36]
+            boundaries['nose_bot'] = nose_bot[mask_lnd[31:36] > 0]
             uper_left_eyelid = landmarks[36:40]
             boundaries['upper_left_eyelid'] = uper_left_eyelid[mask_lnd[36:40] > 0]
             lower_left_eyelid = np.array([landmarks[i] for i in [36, 41, 40, 39]])
