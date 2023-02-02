@@ -1,5 +1,7 @@
 # SPIGA: Shape Preserving Facial Landmarks with Graph Attention Networks.
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)]("https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb)
 [![arXiv](https://img.shields.io/badge/arXiv-2210.07233-b31b1b.svg?style=plastic)](https://arxiv.org/abs/2210.07233) 
+
 
 This repository contains the source code of **SPIGA, a face alignment and headpose estimator** that takes advantage of the complementary benefits from CNN and GNN architectures producing plausible face shapes in presence of strong appearance changes. 
 
