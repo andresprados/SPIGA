@@ -1,8 +1,4 @@
-import os
-import sys
-root_path = os.path.realpath(__file__).split('/eval/results_gen.py')[0]
-sys.path.append(root_path)
-
+import pkg_resources
 import json
 import copy
 import torch
@@ -58,8 +54,8 @@ class Tester:
 
         # Results
         self.data_struc = {'imgpath': str, 'bbox': None, 'headpose': None, 'ids': None, 'landmarks': None, 'visible': None}
-        self.result_path = root_path + '/eval/results/'
-        self.result_file = 'results_%s_%s.json' % (self.database, self.anns_type)
+        self.result_path = pkg_resources.resource_filename('eval', 'results')
+        self.result_file = '/results_%s_%s.json' % (self.database, self.anns_type)
         self.file_out = self.result_path + self.result_file
 
     def generate_results(self):

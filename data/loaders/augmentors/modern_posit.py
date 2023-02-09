@@ -1,4 +1,5 @@
 import os
+import pkg_resources
 import numpy as np
 import cv2
 
@@ -6,8 +7,7 @@ import cv2
 from data.loaders.augmentors.utils import rotation_matrix_to_euler
 
 # Model file nomenclature
-root_path = os.path.realpath(__file__).split('/data/loaders/augmentors/modern_posit.py')[0]
-model_file_dft = root_path + '/data/models3D/mean_face_3D_{num_ldm}.txt'
+model_file_dft = pkg_resources.resource_filename('data', 'models3D') + '/mean_face_3D_{num_ldm}.txt'
 
 
 class PositPose:

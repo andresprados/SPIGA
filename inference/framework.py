@@ -1,13 +1,11 @@
 import os
-import sys
+import pkg_resources
 import copy
 import torch
 import numpy as np
 
 # Paths
-root_path = os.path.realpath(__file__).split('/inference/framework.py')[0]
-sys.path.append(root_path)
-weights_path_dft = root_path + '/models/weights/'
+weights_path_dft = pkg_resources.resource_filename('models', 'weights')
 
 from models.spiga import SPIGA
 import inference.pretreatment as pretreat

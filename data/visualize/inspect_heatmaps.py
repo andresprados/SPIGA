@@ -1,12 +1,5 @@
-import os
-import sys
 import cv2
-import random
 import numpy as np
-
-# Import repository paths
-root_path = os.path.realpath(__file__).split('/data/visualize/inspect_heatmaps.py')[0]
-sys.path.append(root_path)
 
 from data.visualize.inspect_dataset import DatasetInspector, inspect_parser
 

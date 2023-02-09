@@ -1,13 +1,9 @@
-import os
-import sys
 import json
+import pkg_resources
 from collections import OrderedDict
 
 # Paths
-root_path = os.path.realpath(__file__).split('/eval/benchmark/evaluator.py')[0]
-sys.path.append(root_path)
-data_path = root_path + '/data/annotations/'
-
+data_path = pkg_resources.resource_filename('data', 'annotations')
 
 def main():
 

@@ -1,12 +1,6 @@
-import os
-import sys
 import cv2
 import random
 import numpy as np
-
-# Import repository paths
-root_path = os.path.realpath(__file__).split('/data/visualize/inspect_dataset.py')[0]
-sys.path.append(root_path)
 
 import data.loaders.dl_config as dl_cfg
 import data.loaders.dataloader as dl

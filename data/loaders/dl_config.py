@@ -1,14 +1,11 @@
 import os
 import json
+import pkg_resources
 from collections import OrderedDict
 
-# Import repository paths
-root_path = os.path.realpath(__file__).split('/data/loaders/dl_config.py')[0]
-
-# Paths
-db_img_path = root_path + "/data/databases/"    # Update image path if needed
-db_anns_path = root_path + "/data/annotations/{database}/{file_name}.json"
-
+# Default data paths
+db_img_path = pkg_resources.resource_filename('data', 'databases')
+db_anns_path = pkg_resources.resource_filename('data', 'annotations') + "/{database}/{file_name}.json"
 
 class AlignConfig:
 

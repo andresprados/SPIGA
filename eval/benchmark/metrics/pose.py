@@ -157,28 +157,3 @@ class MetricsHeadpose(Metrics):
         num_imgs, base = np.histogram(error, bins=bins)
         cumulative = [x / float(len(error)) for x in np.cumsum(num_imgs)]
         return [cumulative[:bins], base[:bins]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

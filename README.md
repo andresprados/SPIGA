@@ -23,8 +23,18 @@ This repository contains the source code of **SPIGA, a face alignment and headpo
 
 ## Setup
 The repository has been tested on Ubuntu 20.04 with CUDA 11.4, the latest version of cuDNN, Python 3.8 and Pytorch 1.12.1.
-Please install the required dependencies using ```pip install -r requirements.txt``` or any other method.
+Please install the repository from source code:
 
+```
+# Best practices: 
+#  1. Create a virtual environment.
+#  2. Install Pytorch according to your CUDA version.
+#  3. Install SPIGA from source code:
+
+git clone https://github.com/andresprados/SPIGA.git
+cd spiga
+pip install -e .  
+```
 * **Models:** You can download the model weights from [Google Drive](https://drive.google.com/drive/folders/1olrkoiDNK_NUCscaG9BbO3qsussbDi7I?usp=sharing). By default, they should be stored at ```./models/weights/```.
 * **Datasets:** Download the dataset images from the official websites ([300W](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/), [AFLW](https://www.tugraz.at/institute/icg/research/team-bischof/lrs/downloads/aflw/), [WFLW](https://wywu.github.io/projects/LAB/WFLW.html), [COFW](http://www.vision.caltech.edu/xpburgos/ICCV13/)). By default they should be saved following the next folder structure:
 

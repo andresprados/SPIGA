@@ -9,6 +9,7 @@ tmp
 *.mp4
 *.h5
 *.pt
+*.egg-info
 
 # Virtual enviroment
 **/venv
