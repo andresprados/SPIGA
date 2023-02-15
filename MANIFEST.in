@@ -1,0 +1,5 @@
+include spiga/data/annotations/**/db_info.json
+include spiga/data/models3D/*.txt
+include spiga/data/readme.md
+include spiga/eval/benchmark/readme.md
+

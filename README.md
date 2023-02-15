@@ -6,7 +6,7 @@
 This repository contains the source code of **SPIGA, a face alignment and headpose estimator** that takes advantage of the complementary benefits from CNN and GNN architectures producing plausible face shapes in presence of strong appearance changes. 
 
 <p align="center">
-<img src="./assets/spiga_scheme.png" width="80%">
+    <img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/spiga_scheme.png" width="80%">
 </p>
 
 **It achieves top-performing results in:**
@@ -65,7 +65,7 @@ pip install -e .
 
 ## Dataloaders and Benchmarks
 The alignment dataloaders and his respective benchmark are located at ```./data``` and ```./eval/benchmark``` respectively.
-For more information check the [data readme](./data/readme.md) or the [benchmark readme](./eval/benchmark/readme.md).
+For more information check the [Data Readme](spiga/data/readme.md) or the [Benchmark Readme](spiga/eval/benchmark/readme.md).
 
 ## Evaluation
 The models evaluation is divided in two scripts:

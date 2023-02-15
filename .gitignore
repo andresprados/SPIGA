@@ -7,12 +7,17 @@ tmp
 *~
 *.idea
 *.mp4
+*.avi
 *.h5
 *.pt
 *.egg-info
+
+# Build
+/build
+/dist
 
 # Virtual enviroment
 **/venv
 
 # Dataset images
-/data/databases
+/spiga/data/databases
