@@ -5,10 +5,10 @@ import torch
 import numpy as np
 
 # Paths
-weights_path_dft = pkg_resources.resource_filename('models', 'weights')
+weights_path_dft = pkg_resources.resource_filename('spiga', 'models/weights')
 
+import spiga.inference.pretreatment as pretreat
 from spiga.models.spiga import SPIGA
-from spiga import inference as pretreat
 from spiga.inference.config import ModelConfig
 
 
@@ -32,8 +32,16 @@ class SPIGAFramework:
         weights_path = self.model_cfg.model_weights_path
         if weights_path is None:
             weights_path = weights_path_dft
-        weights_file = os.path.join(weights_path, self.model_cfg.model_weights)
-        self.model.load_state_dict(torch.load(weights_file))
+
+        if self.model_cfg.load_model_url:
+            model_state_dict = torch.hub.load_state_dict_from_url(self.model_cfg.model_weights_url,
+                                                                  model_dir=weights_path,
+                                                                  file_name=self.model_cfg.model_weights)
+        else:
+            weights_file = os.path.join(weights_path, self.model_cfg.model_weights)
+            model_state_dict = torch.load(weights_file)
+
+        self.model.load_state_dict(model_state_dict)
         self.model = self.model.cuda(gpus[0])
         self.model.eval()
         print('SPIGA model loaded!')
