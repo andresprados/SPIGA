@@ -35,11 +35,11 @@ git clone https://github.com/andresprados/SPIGA.git
 cd spiga
 pip install -e .  
 ```
-* **Models:** You can download the model weights from [Google Drive](https://drive.google.com/drive/folders/1olrkoiDNK_NUCscaG9BbO3qsussbDi7I?usp=sharing). By default, they should be stored at ```./models/weights/```.
+* **Models:** You can download the model weights from [Google Drive](https://drive.google.com/drive/folders/1olrkoiDNK_NUCscaG9BbO3qsussbDi7I?usp=sharing). By default, they should be stored at ```./spiga/models/weights/```.
 * **Datasets:** Download the dataset images from the official websites ([300W](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/), [AFLW](https://www.tugraz.at/institute/icg/research/team-bischof/lrs/downloads/aflw/), [WFLW](https://wywu.github.io/projects/LAB/WFLW.html), [COFW](http://www.vision.caltech.edu/xpburgos/ICCV13/)). By default they should be saved following the next folder structure:
 
 ```
-./data/databases/   # Default path can be updated by modifying 'db_img_path' in ./data/loaders/dl_config.py
+./spiga/data/databases/   # Default path can be updated by modifying 'db_img_path' in ./spiga/data/loaders/dl_config.py
 |
 └───/300w               
 │   └─── /images           
@@ -58,28 +58,28 @@ pip install -e .
     └─── /images
 ```
 
-* **Annotations:** We have stored for simplicity the datasets annotations directly in ```./data/annotations```. We strongly recommend to move them out of the repository if you plan to use it as a git directory.
-* **Results:** Similar to the annotations problem, we have stored the results in ```./eval/results/<dataset_name>```. Remove them if need it.
+* **Annotations:** We have stored for simplicity the datasets annotations directly in ```./spiga/data/annotations```. We strongly recommend to move them out of the repository if you plan to use it as a git directory.
+* **Results:** Similar to the annotations problem, we have stored the results in ```./spiga/eval/results/<dataset_name>```. Remove them if need it.
 
 ***Note:*** All the callable files provide a detailed parser that describes the behaviour of the program and their inputs. Please, check the operational modes by using the extension ```--help```.
 
 ## Dataloaders and Benchmarks
-The alignment dataloaders and his respective benchmark are located at ```./data``` and ```./eval/benchmark``` respectively.
+The alignment dataloaders and his respective benchmark are located at ```./spiga/data``` and ```./spiga/eval/benchmark``` respectively.
 For more information check the [Data Readme](spiga/data/readme.md) or the [Benchmark Readme](spiga/eval/benchmark/readme.md).
 
 ## Evaluation
 The models evaluation is divided in two scripts:
 
-**Results generation**: The script extracts the data alignments and headpose estimation from the desired ``` <dataset_name>``` trained network. Generating a ```./eval/results/results_<dataset_name>_test.json``` file which follows the same data structure defined by the dataset annotations.
+**Results generation**: The script extracts the data alignments and headpose estimation from the desired ``` <dataset_name>``` trained network. Generating a ```./spiga/eval/results/results_<dataset_name>_test.json``` file which follows the same data structure defined by the dataset annotations.
 
 ```
-python ./eval/results_gen.py <dataset_name>
+python ./spiga/eval/results_gen.py <dataset_name>
 ``` 
  
 **Benchmark metrics**: The script generates the desired landmark or headpose estimation metrics. We have implemented an useful benchmark which allows you to test any model using a results file as input. 
 
 ```
-python ./eval/benchmark/evaluator.py /path/to/<results_file.json> --eval lnd pose -s
+python ./spiga/eval/benchmark/evaluator.py /path/to/<results_file.json> --eval lnd pose -s
 ``` 
 
 ***Note:*** You will have to interactively select the NME_norm and other parameters in the terminal window.

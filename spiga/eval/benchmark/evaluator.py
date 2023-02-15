@@ -3,7 +3,7 @@ import pkg_resources
 from collections import OrderedDict
 
 # Paths
-data_path = pkg_resources.resource_filename('data', 'annotations')
+data_path = pkg_resources.resource_filename('spiga', 'data/annotations')
 
 def main():
 

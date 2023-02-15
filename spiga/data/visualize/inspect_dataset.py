@@ -3,7 +3,7 @@ import random
 import numpy as np
 
 import spiga.data.loaders.dl_config as dl_cfg
-from spiga import data as dl
+import spiga.data.loaders.dataloader as dl
 import spiga.data.visualize.plotting as plot
 
 

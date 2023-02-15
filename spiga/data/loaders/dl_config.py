@@ -4,8 +4,8 @@ import pkg_resources
 from collections import OrderedDict
 
 # Default data paths
-db_img_path = pkg_resources.resource_filename('data', 'databases')
-db_anns_path = pkg_resources.resource_filename('data', 'annotations') + "/{database}/{file_name}.json"
+db_img_path = pkg_resources.resource_filename('spiga', 'data/databases')
+db_anns_path = pkg_resources.resource_filename('spiga', 'data/annotations') + "/{database}/{file_name}.json"
 
 class AlignConfig:
 

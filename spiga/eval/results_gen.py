@@ -4,7 +4,8 @@ import copy
 import torch
 
 import spiga.data.loaders.dl_config as dl_cfg
-from spiga import inference as pretreat, data as dl
+import spiga.data.loaders.dataloader as dl
+import spiga.inference.pretreatment as pretreat
 from spiga.inference.framework import SPIGAFramework
 from spiga.inference.config import ModelConfig
 
@@ -53,7 +54,7 @@ class Tester:
 
         # Results
         self.data_struc = {'imgpath': str, 'bbox': None, 'headpose': None, 'ids': None, 'landmarks': None, 'visible': None}
-        self.result_path = pkg_resources.resource_filename('eval', 'results')
+        self.result_path = pkg_resources.resource_filename('spiga', 'eval/results')
         self.result_file = '/results_%s_%s.json' % (self.database, self.anns_type)
         self.file_out = self.result_path + self.result_file
 

@@ -130,7 +130,7 @@ class MetricsHeadpose(Metrics):
     def _posit_anns(self):
 
         import spiga.data.loaders.dl_config as dl_config
-        from spiga import data as dl
+        import spiga.data.loaders.dataloader as dl
 
         # Load configuration
         data_config = dl_config.AlignConfig(self.database, self.data_type)

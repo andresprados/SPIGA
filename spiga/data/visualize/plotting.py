@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 
-import spiga.data.loaders.augmentors.utils as du
+import spiga.data.loaders.augmentors.utils as dlu
 
 BLUE = (255, 0, 0)
 GREEN = (0, 255, 0)
@@ -76,7 +76,7 @@ def plot_landmarks_pil(image, landmarks, visible=None, mask=None):
 
 def draw_pose(img, rot, trl, K, euler=False, size=0.5, colors=(BLUE, GREEN, RED)):
     if euler:
-        rot = du.euler_to_rotation_matrix(rot)
+        rot = dlu.euler_to_rotation_matrix(rot)
 
     canvas = img.copy()
     rotV, _ = cv2.Rodrigues(rot)
