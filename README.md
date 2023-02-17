@@ -51,6 +51,10 @@ We provide an inference framework for SPIGA available at ```./spiga/inference```
 in third-party projects by adding a few lines of code. Check out our image inference example
 for more information: [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb)
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/demo.gif" width="40%">
+</p>
+
 ### Face Video Analyzer Demo:
 The demo application provides a general framework for tracking, detecting and extracting features of human faces in images or videos.
 You can use the following commands to run the demo:
