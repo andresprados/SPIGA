@@ -1,7 +1,10 @@
 # SPIGA: Shape Preserving Facial Landmarks with Graph Attention Networks.
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb)
-[![arXiv](https://img.shields.io/badge/arXiv-2210.07233-b31b1b.svg?style=plastic)](https://arxiv.org/abs/2210.07233) 
 
+[![Project Page](https://badgen.net/badge/color/Project%20Page/purple?icon=atom&label)](https://bmvc2022.mpi-inf.mpg.de/155/)
+[![arXiv](https://img.shields.io/badge/arXiv-2210.07233-b31b1b.svg)](https://arxiv.org/abs/2210.07233)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb)
+[![PyPI version](https://badge.fury.io/py/spiga.svg)](https://badge.fury.io/py/spiga)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
 
 This repository contains the source code of **SPIGA, a face alignment and headpose estimator** that takes advantage of the complementary benefits from CNN and GNN architectures producing plausible face shapes in presence of strong appearance changes. 
 
@@ -23,7 +26,7 @@ This repository contains the source code of **SPIGA, a face alignment and headpo
 
 ## Setup
 The repository has been tested on Ubuntu 20.04 with CUDA 11.4, the latest version of cuDNN, Python 3.8 and Pytorch 1.12.1.
-Please install the repository from source code:
+To run the video analyzer demo or evaluate the algorithm, install the repository from the source code:
 
 ```
 # Best practices: 
@@ -34,10 +37,54 @@ Please install the repository from source code:
 git clone https://github.com/andresprados/SPIGA.git
 cd spiga
 pip install -e .  
-```
-* **Models:** You can download the model weights from [Google Drive](https://drive.google.com/drive/folders/1olrkoiDNK_NUCscaG9BbO3qsussbDi7I?usp=sharing). By default, they should be stored at ```./spiga/models/weights/```.
-* **Datasets:** Download the dataset images from the official websites ([300W](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/), [AFLW](https://www.tugraz.at/institute/icg/research/team-bischof/lrs/downloads/aflw/), [WFLW](https://wywu.github.io/projects/LAB/WFLW.html), [COFW](http://www.vision.caltech.edu/xpburgos/ICCV13/)). By default they should be saved following the next folder structure:
 
+# To run the video analyzer demo install the extra requirements.
+pip install -e .[demo]
+```
+**Models:** By default, model weights are automatically downloaded on demand and stored at ```./spiga/models/weights/```.
+You can also download them from [Google Drive](https://drive.google.com/drive/folders/1olrkoiDNK_NUCscaG9BbO3qsussbDi7I?usp=sharing). 
+
+***Note:*** All the callable files provide a detailed parser that describes the behaviour of the program and their inputs. Please, check the operational modes by using the extension ```--help```.
+
+## Inference and Demo
+We provide an inference framework for SPIGA available at ```./spiga/inference```. The models can be easily deployed 
+in third-party projects by adding a few lines of code. Check out our image inference example
+for more information: [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb)
+
+### Face Video Analyzer Demo:
+The demo application provides a general framework for tracking, detecting and extracting features of human faces in images or videos.
+You can use the following commands to run the demo:
+
+```
+python ./spiga/demo/app.py \
+            [--input] \      # Webcam ID or Video Path. Dft: Webcam '0'.
+            [--dataset] \    # SPIGA pretrained weights per dataset. Dft: 'wflw'.
+            [--tracker] \    # Tracker name. Dft: 'RetinaSort'.
+            [--show] \       # Select the attributes of the face to be displayed. Dft: ['fps', 'face_id', 'landmarks', 'headpose']
+            [--save] \       # Save record.
+            [--noview] \     # Do not visualize window.
+            [--outpath] \    # Recorded output directory. Dft: './spiga/demo/outputs'
+            [--fps] \        # Frames per second.
+            [--shape] \      # Visualizer shape (W,H).
+```
+***Note:*** For more information check the [Demo Readme](spiga/demo/readme.md) or call the app parser ```--help```.
+
+
+## Dataloaders and Benchmarks
+This repository provides general-use tools for the task of face alignment and headpose estimation:
+
+* **Dataloaders:** Training and inference dataloaders are available at ```./spiga/data```.
+Including the data augmentation tools used for training SPIGA and data-visualizer to analyze the dataset images and features.
+For more information check the [Data Readme](spiga/data/readme.md) .
+
+* **Benchmark:** A common benchmark framework to test any algorithm in the task of face alignment and headpose estimation
+is available at ```./spiga/eval/benchmark```. For more information check the following Evaluation Section and the [Benchmark Readme](spiga/eval/benchmark/readme.md).
+
+**Datasets:** To run the data visualizers or the evaluation benchmark please download the dataset images from the official websites 
+([300W](https://ibug.doc.ic.ac.uk/resources/facial-point-annotations/), 
+[AFLW](https://www.tugraz.at/institute/icg/research/team-bischof/lrs/downloads/aflw/), 
+[WFLW](https://wywu.github.io/projects/LAB/WFLW.html), [COFW](http://www.vision.caltech.edu/xpburgos/ICCV13/)). 
+By default they should be saved following the next folder structure:
 ```
 ./spiga/data/databases/   # Default path can be updated by modifying 'db_img_path' in ./spiga/data/loaders/dl_config.py
 |
@@ -57,15 +104,9 @@ pip install -e .
 └───/wflw
     └─── /images
 ```
+**Annotations:** We have stored for simplicity the datasets annotations directly in ```./spiga/data/annotations```. We strongly recommend to move them out of the repository if you plan to use it as a git directory.
 
-* **Annotations:** We have stored for simplicity the datasets annotations directly in ```./spiga/data/annotations```. We strongly recommend to move them out of the repository if you plan to use it as a git directory.
-* **Results:** Similar to the annotations problem, we have stored the results in ```./spiga/eval/results/<dataset_name>```. Remove them if need it.
-
-***Note:*** All the callable files provide a detailed parser that describes the behaviour of the program and their inputs. Please, check the operational modes by using the extension ```--help```.
-
-## Dataloaders and Benchmarks
-The alignment dataloaders and his respective benchmark are located at ```./spiga/data``` and ```./spiga/eval/benchmark``` respectively.
-For more information check the [Data Readme](spiga/data/readme.md) or the [Benchmark Readme](spiga/eval/benchmark/readme.md).
+**Results:** Similar to the annotations problem, we have stored the SPIGA results in ```./spiga/eval/results/<dataset_name>```. Remove them if need it.
 
 ## Evaluation
 The models evaluation is divided in two scripts:
@@ -141,18 +182,18 @@ python ./spiga/eval/benchmark/evaluator.py /path/to/<results_file.json> --eval l
     
 ## Coming soon...
 - [x] Release evaluation code and pretrained models.
-- [ ] Project page and demo.
+- [x] Project page and demo.
 - [ ] Training code.
 
 ## BibTeX Citation
-If you find this work or code useful for your research, please consider citing:
 ```
-@inproceedings{prados22spiga,
-  author = {Andres Prados-Torreblanca and José M. Buenaposada and Luis Baumela},
-  title = {Shape Preserving Facial Landmarks with Graph Attention Networks},
-  booktitle = {British Machine Vision Conference (BMVC)},
-  year = {2022},
-  url = {https://arxiv.org/abs/2210.07233}
+@inproceedings{Prados-Torreblanca_2022_BMVC,
+  author    = {Andrés  Prados-Torreblanca and José M Buenaposada and Luis Baumela},
+  title     = {Shape Preserving Facial Landmarks with Graph Attention Networks},
+  booktitle = {33rd British Machine Vision Conference 2022, {BMVC} 2022, London, UK, November 21-24, 2022},
+  publisher = {{BMVA} Press},
+  year      = {2022},
+  url       = {https://bmvc2022.mpi-inf.mpg.de/0155.pdf}
 }
 ```
 
