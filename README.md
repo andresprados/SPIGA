@@ -80,11 +80,11 @@ python ./spiga/demo/app.py \
 
 <p align="center">
 
-<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/demo.gif" width=300px height=250px>
+<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/demo.gif" width=250px height=250px>
 &nbsp;&nbsp;&nbsp;
-<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/results/carnaval.gif" width=350px height=250px>
+<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/results/carnaval.gif" width=300px height=250px>
 &nbsp;&nbsp;&nbsp;
-<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/results/football.gif" width=300px height=250px>
+<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/results/football.gif" width=230px height=250px>
 
 </p>
 
