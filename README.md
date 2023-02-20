@@ -2,9 +2,9 @@
 
 [![Project Page](https://badgen.net/badge/color/Project%20Page/purple?icon=atom&label)](https://bmvc2022.mpi-inf.mpg.de/155/)
 [![arXiv](https://img.shields.io/badge/arXiv-2210.07233-b31b1b.svg)](https://arxiv.org/abs/2210.07233)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb)
 [![PyPI version](https://badge.fury.io/py/spiga.svg)](https://badge.fury.io/py/spiga)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/video_demo.ipynb)
 
 This repository contains the source code of **SPIGA, a face alignment and headpose estimator** that takes advantage of the complementary benefits from CNN and GNN architectures producing plausible face shapes in presence of strong appearance changes. 
 
@@ -48,12 +48,17 @@ You can also download them from [Google Drive](https://drive.google.com/drive/fo
 
 ## Inference and Demo
 We provide an inference framework for SPIGA available at ```./spiga/inference```. The models can be easily deployed 
-in third-party projects by adding a few lines of code. Check out our image inference example
-for more information: [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb)
+in third-party projects by adding a few lines of code. Check out our inference and application tutorials
+for more information: 
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/demo.gif" width="40%">
-</p>
+<div align="center">
+
+Tutorials | Notebook |
+:---: | :---: |
+Image Inference Example | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/image_demo.ipynb) |
+Face Video Analyzer Demo | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/andresprados/SPIGA/blob/main/colab_tutorials/video_demo.ipynb) |
+
+</div>
 
 ### Face Video Analyzer Demo:
 The demo application provides a general framework for tracking, detecting and extracting features of human faces in images or videos.
@@ -71,6 +76,18 @@ python ./spiga/demo/app.py \
             [--fps] \        # Frames per second.
             [--shape] \      # Visualizer shape (W,H).
 ```
+
+
+<p align="center">
+
+<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/demo.gif" width=300px height=250px>
+&nbsp;&nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/results/carnaval.gif" width=350px height=250px>
+&nbsp;&nbsp;&nbsp;
+<img src="https://raw.githubusercontent.com/andresprados/SPIGA/main/assets/results/football.gif" width=300px height=250px>
+
+</p>
+
 ***Note:*** For more information check the [Demo Readme](spiga/demo/readme.md) or call the app parser ```--help```.
 
 
@@ -183,11 +200,7 @@ python ./spiga/eval/benchmark/evaluator.py /path/to/<results_file.json> --eval l
 |challenge|4.662|42.449|3.704|6.626|7.390|10.095|
 
 </details>
-    
-## Coming soon...
-- [x] Release evaluation code and pretrained models.
-- [x] Project page and demo.
-- [ ] Training code.
+
 
 ## BibTeX Citation
 ```
