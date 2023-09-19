@@ -47,7 +47,8 @@ class SPIGAFramework:
         except RuntimeError as e:
             if 'NVIDIA'  in e.message:
                 pass
-            raise
+            else:
+                raise
         self.model.eval()
         print('SPIGA model loaded!')
 
@@ -143,5 +144,6 @@ class SPIGAFramework:
                 except RuntimeError as e:
                     if 'NVIDIA'  in e.message:
                         pass
-                    raise
+                    else:
+                        raise
         return data_var
