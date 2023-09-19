@@ -44,7 +44,7 @@ class SPIGAFramework:
         self.model.load_state_dict(model_state_dict)
         try:
             self.model = self.model.cuda(gpus[0])
-        except RuntimeError,e:
+        except RuntimeError as e:
             if 'NVIDIA'  in e.message:
                 pass
             raise
@@ -140,7 +140,7 @@ class SPIGAFramework:
             with torch.no_grad():
                 try:
                     data_var = data.cuda(device=self.gpus[0], non_blocking=True)
-                except RuntimeError,e:
+                except RuntimeError as e:
                     if 'NVIDIA'  in e.message:
                         pass
                     raise
