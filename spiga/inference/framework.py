@@ -45,7 +45,7 @@ class SPIGAFramework:
         try:
             self.model = self.model.cuda(gpus[0])
         except RuntimeError as e:
-            if 'NVIDIA'  in e.message:
+            if 'NVIDIA'  in str(e):
                 pass
             else:
                 raise
@@ -142,7 +142,7 @@ class SPIGAFramework:
                 try:
                     data_var = data.cuda(device=self.gpus[0], non_blocking=True)
                 except RuntimeError as e:
-                    if 'NVIDIA'  in e.message:
+                    if 'NVIDIA'  in str(e):
                         pass
                     else:
                         raise
