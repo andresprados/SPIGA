@@ -42,7 +42,13 @@ class SPIGAFramework:
             model_state_dict = torch.load(weights_file)
 
         self.model.load_state_dict(model_state_dict)
-        self.model = self.model.cuda(gpus[0])
+        try:
+            self.model = self.model.cuda(gpus[0])
+        except RuntimeError as e:
+            if 'NVIDIA'  in str(e):
+                pass
+            else:
+                raise
         self.model.eval()
         print('SPIGA model loaded!')
 
@@ -133,5 +139,11 @@ class SPIGAFramework:
                 data[k] = self._data2device(v)
         else:
             with torch.no_grad():
-                data_var = data.cuda(device=self.gpus[0], non_blocking=True)
+                try:
+                    data_var = data.cuda(device=self.gpus[0], non_blocking=True)
+                except RuntimeError as e:
+                    if 'NVIDIA'  in str(e):
+                        data_var = data
+                    else:
+                        raise
         return data_var
