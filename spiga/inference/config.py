@@ -2,11 +2,11 @@ from collections import OrderedDict
 
 from spiga.data.loaders.dl_config import DatabaseStruct
 
-MODELS_URL = {'wflw': 'https://drive.google.com/uc?export=download&confirm=yes&id=1h0qA5ysKorpeDNRXe9oYkVcVe8UYyzP7',
-              '300wpublic': 'https://drive.google.com/uc?export=download&confirm=yes&id=1YrbScfMzrAAWMJQYgxdLZ9l57nmTdpQC',
-              '300wprivate': 'https://drive.google.com/uc?export=download&confirm=yes&id=1fYv-Ie7n14eTD0ROxJYcn6SXZY5QU9SM',
-              'merlrav': 'https://drive.google.com/uc?export=download&confirm=yes&id=1GKS1x0tpsTVivPZUk_yrSiMhwEAcAkg6',
-              'cofw68': 'https://drive.google.com/uc?export=download&confirm=yes&id=1fYv-Ie7n14eTD0ROxJYcn6SXZY5QU9SM'}
+MODELS_URL = {'wflw': 'https://huggingface.co/aprados/spiga/resolve/main/spiga_wflw.pt?download=true',
+              '300wpublic': 'https://huggingface.co/aprados/spiga/resolve/main/spiga_300wpublic.pt?download=true',
+              '300wprivate': 'https://huggingface.co/aprados/spiga/resolve/main/spiga_300wprivate.pt?download=true',
+              'merlrav': 'https://huggingface.co/aprados/spiga/resolve/main/spiga_merlrav.pt?download=true',
+              'cofw68': 'https://huggingface.co/aprados/spiga/resolve/main/spiga_300wprivate.pt?download=true'}
 
 
 class ModelConfig(object):

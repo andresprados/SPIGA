@@ -42,7 +42,7 @@ pip install -e .
 pip install -e .[demo]
 ```
 **Models:** By default, model weights are automatically downloaded on demand and stored at ```./spiga/models/weights/```.
-You can also download them from [Google Drive](https://drive.google.com/drive/folders/1olrkoiDNK_NUCscaG9BbO3qsussbDi7I?usp=sharing). 
+You can also download them from [Hugging Face](https://huggingface.co/aprados/spiga/tree/main) and [Google Drive](https://drive.google.com/drive/folders/1olrkoiDNK_NUCscaG9BbO3qsussbDi7I?usp=sharing). 
 
 ***Note:*** All the callable files provide a detailed parser that describes the behaviour of the program and their inputs. Please, check the operational modes by using the extension ```--help```.
 
